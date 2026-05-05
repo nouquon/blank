@@ -1,11 +1,9 @@
-#
-d=/workspaces/blank/alpinefs
-sudo mount --bind /proc $d/proc
-sudo mount --bind /sys $d/sys
-sudo mount --bind /dev $d/dev
-sudo mount --bind /dev/pts $d/dev/pts
-sudo mount --bind /dev/shm $d/dev/shm
-
-cp resolv.conf $d/etc/resolv.conf
-chroot $d /bin/su -l
-#
+#!/bin/sh
+dir=/workspaces/blank/alpinefs
+if [ ! -d "$dir/proc/fs" ]; then
+  for fs in proc sys dev ; do
+    sudo mount --rbind /$fs $dir/$fs
+  done
+fi
+#echo "nameserver 1.1.1.1" > $dir/etc/resolv.conf
+sudo chroot $dir /bin/su -l

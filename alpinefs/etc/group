@@ -33,3 +33,5 @@ utmp:x:406:
 ping:x:999:
 nogroup:x:65533:
 nobody:x:65534:
+synapse:x:101:synapse
+postgres:x:70:postgres

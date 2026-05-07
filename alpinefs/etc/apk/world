@@ -4,3 +4,6 @@ alpine-release
 apk-tools
 busybox
 musl-utils
+nano
+openrc
+synapse
